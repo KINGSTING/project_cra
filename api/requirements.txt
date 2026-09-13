@@ -1,0 +1,2 @@
+libsql-client
+python-dotenv
