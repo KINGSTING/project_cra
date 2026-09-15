@@ -1,7 +1,7 @@
 import React from 'react';
-import './LandingPage.css'; 
+import './LandingPage.css'; // <-- THIS IS THE CRITICAL LINE
 
-// Import logo assets from the assets folder
+// Your image imports
 import opLogo from './assets/Seal_of_the_Office_of_the_President_of_the_Philippines.webp';
 import gritLogo from './assets/grit-seal-light.png';
 import ombLogo from './assets/Ombudsman_of_the_Philippines.png';
@@ -17,7 +17,7 @@ export default function LandingPage() {
           <button className="btn-signup">Sign Up</button>
         </div>
         
-        <h1 className="hero-title">IMP</h1>
+        <h1 className="hero-title">Integrity Management Program</h1>
         
         <div className="logos-container">
           <div className="logo-circle">
