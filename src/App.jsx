@@ -1,42 +1,54 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import LandingPage from './LandingPage'
 
 function App() {
-  const [role, setRole] = useState('client')
   return (
     <Router>
-      <div style={{ minHeight: '100vh', background: '#f8fafc', color: '#0f172a', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        <header style={{ background: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '16px 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontWeight: 700, fontSize: '18px', color: '#1e3a8a' }}>IMP-CRA Portal</span>
-            <span style={{ fontSize: '12px', background: '#eff6ff', color: '#1d4ed8', padding: '4px 10px', borderRadius: '999px', fontWeight: 600 }}>IMP Handbook Part II-A</span>
-          </div>
-          <nav style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <div style={{ background: '#f1f5f9', padding: '4px', borderRadius: '8px', display: 'flex', gap: '4px' }}>
-              <button 
-                onClick={() => setRole('client')} 
-                style={{ padding: '6px 14px', borderRadius: '6px', border: 'none', background: role === 'client' ? '#ffffff' : 'transparent', boxShadow: role === 'client' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', fontWeight: 600, cursor: 'pointer', color: role === 'client' ? '#1e3a8a' : '#64748b' }}>
-                Agency (Client/IMC)
-              </button>
-              <button 
-                onClick={() => setRole('admin')} 
-                style={{ padding: '6px 14px', borderRadius: '6px', border: 'none', background: role === 'admin' ? '#ffffff' : 'transparent', boxShadow: role === 'admin' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', fontWeight: 600, cursor: 'pointer', color: role === 'admin' ? '#1e3a8a' : '#64748b' }}>
-                Oversight (Admin)
-              </button>
-            </div>
-            <Link to="/report" style={{ textDecoration: 'none', padding: '8px 16px', background: '#1e3a8a', color: '#fff', borderRadius: '6px', fontWeight: 600, fontSize: '14px' }}>Template 9 Report</Link>
-            <Link to="/risks" style={{ textDecoration: 'none', padding: '8px 16px', background: '#3b82f6', color: '#fff', borderRadius: '6px', fontWeight: 600, fontSize: '14px' }}>Risk Register</Link>
-          </nav>
-        </header>
-        <main style={{ maxWidth: '1100px', margin: '32px auto', padding: '0 24px' }}>
-          <Routes>
-            <Route path="/" element={role === 'admin' ? <AdminDashboard /> : <ClientDashboard />} />
-            <Route path="/report" element={<IMPReport />} />
-            <Route path="/risks" element={<RiskRegisterDashboard />} />
-          </Routes>
-        </main>
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/portal/*" element={<PortalLayout />} />
+      </Routes>
     </Router>
+  )
+}
+
+function PortalLayout() {
+  const [role, setRole] = useState('client')
+  
+  return (
+    <div style={{ minHeight: '100vh', background: '#f8fafc', color: '#0f172a', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+      <header style={{ background: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '16px 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ fontWeight: 700, fontSize: '18px', color: '#1e3a8a' }}>IMP-CRA Portal</span>
+          <span style={{ fontSize: '12px', background: '#eff6ff', color: '#1d4ed8', padding: '4px 10px', borderRadius: '999px', fontWeight: 600 }}>IMP Handbook Part II-A</span>
+        </div>
+        <nav style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <div style={{ background: '#f1f5f9', padding: '4px', borderRadius: '8px', display: 'flex', gap: '4px' }}>
+            <button 
+              onClick={() => setRole('client')} 
+              style={{ padding: '6px 14px', borderRadius: '6px', border: 'none', background: role === 'client' ? '#ffffff' : 'transparent', boxShadow: role === 'client' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', fontWeight: 600, cursor: 'pointer', color: role === 'client' ? '#1e3a8a' : '#64748b' }}>
+              Agency (Client)
+            </button>
+            <button 
+              onClick={() => setRole('admin')} 
+              style={{ padding: '6px 14px', borderRadius: '6px', border: 'none', background: role === 'admin' ? '#ffffff' : 'transparent', boxShadow: role === 'admin' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none', fontWeight: 600, cursor: 'pointer', color: role === 'admin' ? '#1e3a8a' : '#64748b' }}>
+              Oversight (Admin)
+            </button>
+          </div>
+          <Link to="/portal/report" style={{ textDecoration: 'none', padding: '8px 16px', background: '#1e3a8a', color: '#fff', borderRadius: '6px', fontWeight: 600, fontSize: '14px' }}>Template 9 Report</Link>
+          <Link to="/portal/risks" style={{ textDecoration: 'none', padding: '8px 16px', background: '#3b82f6', color: '#fff', borderRadius: '6px', fontWeight: 600, fontSize: '14px' }}>Risk Register</Link>
+        </nav>
+      </header>
+      
+      <main style={{ maxWidth: '1100px', margin: '32px auto', padding: '0 24px' }}>
+        <Routes>
+          <Route path="/" element={role === 'admin' ? <AdminDashboard /> : <ClientDashboard />} />
+          <Route path="report" element={<IMPReport />} />
+          <Route path="risks" element={<RiskRegisterDashboard />} />
+        </Routes>
+      </main>
+    </div>
   )
 }
 
