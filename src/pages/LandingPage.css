@@ -7,7 +7,6 @@
   padding: 0;
 }
 
-/* Header & Hero Section */
 .hero-section {
   position: relative;
   min-height: 80vh;
@@ -58,15 +57,15 @@
 }
 
 .hero-title {
-  /* Use clamp to make the font size responsive: min 2.5rem, prefers 5vw, max 4.5rem */
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  line-height: 1.2; /* This is the magic rule that fixes the overlapping */
-  text-align: center; /* Keeps wrapped lines perfectly centered */
+  line-height: 1.2;
+  text-align: center;
   font-weight: 800;
   letter-spacing: 2px;
   margin-bottom: 48px;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  max-width: 900px; /* Prevents the text from stretching too wide on massive monitors */
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  color: #ffffff;
 }
 
 .logos-container {
@@ -75,7 +74,6 @@
   align-items: center;
 }
 
-/* Properly Sized Logos */
 .logo-circle {
   width: 100px;
   height: 100px;
@@ -84,7 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
@@ -96,7 +94,6 @@
   border-radius: 50%;
 }
 
-/* Dynamic Zooming Sections */
 .zoom-section {
   position: relative;
   min-height: 100vh;
@@ -106,7 +103,6 @@
   overflow: hidden;
 }
 
-/* The actual background image layer */
 .bg-layer {
   position: absolute;
   top: 0;
@@ -119,14 +115,13 @@
   animation: dynamicZoom 20s infinite alternate linear;
 }
 
-/* Dark overlay so text is readable */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(15, 23, 42, 0.85); /* Darkened slightly for better contrast */
+  background: rgba(15, 23, 42, 0.85);
   z-index: 2;
 }
 
@@ -142,6 +137,7 @@
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 24px;
+  color: #ffffff;
 }
 
 .section-content p {
@@ -150,26 +146,24 @@
   color: #e2e8f0;
 }
 
-/* Image assignments using actual file paths */
+/* Background images */
 .bg-malacanang {
-  background-image: url('./assets/Malacanang-Palace-1024x737.webp');
+  background-image: url('../assets/Malacanang-Palace-1024x737.webp');
 }
 
 .bg-ombudsman {
-  background-image: url('./assets/office_of_the_ombudsman_building.jpeg');
+  background-image: url('../assets/office_of_the_ombudsman_building.jpeg');
 }
 
 .bg-ncpag {
-  background-image: url('./assets/ncpag_dome.webp');
+  background-image: url('../assets/ncpag_dome.webp');
 }
 
-/* The Zoom Animation Keyframes */
 @keyframes dynamicZoom {
-  0% { transform: scale(1); }
+  0%   { transform: scale(1); }
   100% { transform: scale(1.15); }
 }
 
-/* Footer */
 .landing-footer {
   background: #0f172a;
   padding: 48px 24px;

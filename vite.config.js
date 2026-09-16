@@ -1,13 +1,21 @@
+// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
   server: {
-    // Force Vite to use Vercel's assigned port, otherwise fallback to 5173
-    port: process.env.PORT ? parseInt(process.env.PORT) : 5173,
-    // Expose the network host so Vercel's proxy can detect it
-    host: true,
-    strictPort: true
-  }
+    port: 3000,
+    strictPort: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
+    watch: {
+      usePolling: true,
+      interval: 300,
+    },
+  },
 })

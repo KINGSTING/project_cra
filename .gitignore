@@ -25,3 +25,13 @@ dist-ssr
 
 .vercel
 .env*
+node_modules/
+.vercel/
+.env
+.env.local
+.env*.local
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+.vite/

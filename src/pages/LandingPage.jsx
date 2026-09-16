@@ -1,24 +1,27 @@
 import React from 'react';
-import './LandingPage.css'; // <-- THIS IS THE CRITICAL LINE
+import { useNavigate } from 'react-router-dom';
+import './LandingPage.css';
 
-// Your image imports
-import opLogo from './assets/Seal_of_the_Office_of_the_President_of_the_Philippines.webp';
-import gritLogo from './assets/grit-seal-light.png';
-import ombLogo from './assets/Ombudsman_of_the_Philippines.png';
+// Fixed paths: one level up, into src/assets/
+import opLogo   from '../assets/Seal_of_the_Office_of_the_President_of_the_Philippines.webp';
+import gritLogo from '../assets/grit-seal-light.png';
+import ombLogo  from '../assets/Ombudsman_of_the_Philippines.png';
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="landing-container">
-      
+
       {/* HEADER / HERO SECTION */}
       <header className="hero-section">
         <div className="auth-nav">
-          <button className="btn-login">Log In</button>
-          <button className="btn-signup">Sign Up</button>
+          <button className="btn-login"  onClick={() => navigate('/login')}>Log In</button>
+          <button className="btn-signup" onClick={() => navigate('/register')}>Sign Up</button>
         </div>
-        
+
         <h1 className="hero-title">Integrity Management Program</h1>
-        
+
         <div className="logos-container">
           <div className="logo-circle">
             <img src={opLogo} alt="Office of the President Seal" />
@@ -39,8 +42,8 @@ export default function LandingPage() {
         <div className="section-content">
           <h2>What is IMP?</h2>
           <p>
-            The Integrity Management Program (IMP) is the national corruption prevention 
-            framework of the Philippine government. It aims to institutionalize systemic 
+            The Integrity Management Program (IMP) is the national corruption prevention
+            framework of the Philippine government. It aims to institutionalize systemic
             safeguards and promote a culture of integrity across all public institutions.
           </p>
         </div>
@@ -53,9 +56,9 @@ export default function LandingPage() {
         <div className="section-content">
           <h2>Brief History of IMP</h2>
           <p>
-            Initiated through Executive Order No. 176, s. 2014, the IMP unified previous 
-            anti-corruption initiatives. Co-implemented by the Office of the President and 
-            the Office of the Ombudsman, it established a standardized approach to assessing 
+            Initiated through Executive Order No. 176, s. 2014, the IMP unified previous
+            anti-corruption initiatives. Co-implemented by the Office of the President and
+            the Office of the Ombudsman, it established a standardized approach to assessing
             and mitigating institutional vulnerabilities.
           </p>
         </div>
@@ -68,8 +71,8 @@ export default function LandingPage() {
         <div className="section-content">
           <h2>Moving Forward</h2>
           <p>
-            As public administration evolves, the IMP-CRA Portal digitizes the compliance 
-            and assessment process. We are paving the way for data-driven risk management 
+            As public administration evolves, the IMP-CRA Portal digitizes the compliance
+            and assessment process. We are paving the way for data-driven risk management
             and transparent governance.
           </p>
         </div>
