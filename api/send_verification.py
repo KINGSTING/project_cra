@@ -1,9 +1,18 @@
 # api/send_verification.py
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import json
+import hmac
+import hashlib
+import secrets
 import re
 import traceback
+from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler
+
+import resend
 from lib.db import get_db
 from lib.magic_link import create_and_send_link
 
