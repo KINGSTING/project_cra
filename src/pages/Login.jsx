@@ -15,7 +15,7 @@ export default function Login() {
     setError("");
     setBusy(true);
     try {
-      await apiPost("/api/auth/request_link", { email });
+      await apiPost("/api/request_link", { email });
       setSent(true);
     } catch (err) {
       if (err.status === 429) {
