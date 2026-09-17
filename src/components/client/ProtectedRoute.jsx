@@ -1,6 +1,6 @@
 // src/components/ProtectedRoute.jsx
 import { Navigate } from "react-router-dom";
-import { useSession } from "../hooks/useSession";
+import { useSession } from "../../hooks/useSession"; 
 
 export default function ProtectedRoute({ children }) {
   const { session, ready } = useSession();

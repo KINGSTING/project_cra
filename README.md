@@ -549,4 +549,3 @@ Key sections:
 ## License
 
 Government of the Republic of the Philippines. Joint project of the Office of the President, Office of the Ombudsman and the UP-NCPAG GRIT Labs.
-```

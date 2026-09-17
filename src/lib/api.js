@@ -65,3 +65,43 @@ export async function apiGet(path) {
   }
   return payload;
 }
+
+// src/lib/api.js — APPEND these below the existing exports
+
+export async function apiPatch(path, body = {}) {
+  const headers = { "Content-Type": "application/json" };
+  const token = getToken();
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const res = await fetch(path, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+  });
+  let payload = null;
+  try { payload = await res.json(); } catch {}
+  if (!res.ok) {
+    const err = new Error(payload?.error || `HTTP ${res.status}`);
+    err.status = res.status;
+    err.payload = payload;
+    throw err;
+  }
+  return payload;
+}
+
+export async function apiDelete(path) {
+  const headers = {};
+  const token = getToken();
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const res = await fetch(path, { method: "DELETE", headers });
+  let payload = null;
+  try { payload = await res.json(); } catch {}
+  if (!res.ok) {
+    const err = new Error(payload?.error || `HTTP ${res.status}`);
+    err.status = res.status;
+    err.payload = payload;
+    throw err;
+  }
+  return payload;
+}

@@ -16,7 +16,12 @@ PORT = 3001
 ROUTES = {
     "/api/send_verification": "send_verification",
     "/api/verify_email":      "verify_email",
-    "/api/request_link":      "request_link",   # ← dropped /auth
+    "/api/request_link":      "request_link",
+    "/api/assessments":       "assessments",
+    "/api/critical_systems":  "critical_systems",
+    "/api/process_steps":     "process_steps",
+    "/api/corruption_risks":  "corruption_risks",
+    "/api/assessment_report": "assessment_report",
 }
 
 # Import each handler lazily
